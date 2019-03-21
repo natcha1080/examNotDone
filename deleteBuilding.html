@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit|Prompt">
+    <link rel="stylesheet" href="home.css">
+    <title>ลบข้อมูลตึก</title>
+
+    <script>
+            function previousManage() {
+                location.href = "managementBuilding.html";
+            }
+        
+        </script>
+</head>
+
+<body onload="show()">
+        <script>
+                function show() {
+                  var name = window.localStorage.getItem("storageName");
+                  var type = window.localStorage.getItem("storageType");
+                  document.getElementById("name").innerHTML = "ชื่อ-สกุล : "+name;
+                  document.getElementById("type").innerHTML = "สถานะ : "+type;
+                }
+                </script>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns">
+                    <div class="column1 is-one-fifth" style="width: 100px;">
+                        <figure class="image is-64x64">
+                            <img src="user.png" alt="ImageUser">
+                        </figure>
+                    </div>
+                    <div class="column2">
+                            <label id="type">สถานะ : </label> <br>
+                            <label id="name">ชื่อ-สกุล : </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="box" style="height: 600px;">
+            <div class="columns">
+                <div class="column1 is-one-fifth" style="width: 350px;">
+                    <aside class="menu">
+                        <p class="menu-label">
+                            <h2>เมนูหลัก</h2>
+                        </p>
+                        <ul class="menu-list">
+                            <li class="b"><a></a></li>
+                            <li class="b"><a></a></li>
+                            <li class="b"><a></a></li>
+                            <li class="b"><a></a></li>
+                            <li class="b"><a></a></li>
+                            <li class="b"><a></a></li>
+                            <li class="b"><a></a></li>
+                            <li class="b"><a></a></li>
+                            <li class="a"><a href="managementBuilding.html">จัดการตึก</a></li>
+                            <li class="b"><a></a></li>
+                            <li class="b"><a></a></li>
+                            <li class="b"><a></a></li>
+                            <li class="b"><a></a></li>
+                            <li class="a"><a href="login.html">ออกจากระบบ</a></li>
+                        </ul>
+                    </aside>
+                </div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="column3">
+                    <h1>ลบข้อมูลตึก</h1> <br>
+                    <div class="table">
+                        <table class="table is-fullwidth" style="width: 900px;">
+                            <!--กำหนดความกว้างของตาราง -->
+                            <thead>
+                                <tr>
+                                    <th>ชื่อตึก(เต็ม)</th>
+                                    <th>ชื่อตึก(ย่อ)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>Geoinformatics</th>
+                                    <th>GI</th>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br>
+                    <div class="columns">
+                            <div class="column7" style="width: 250px;">
+                                <div class="control">
+                                    <button id="btnAll" class="button is-link is-danger" onclick="previousManage()">ยกเลิก</button>
+                                </div>
+                            </div>
+                            <div class="column8" style="width: 250px;">
+                                <div class="control">
+                                    <button id="btnAll" type="submit" class="button is-link is-success">ลบ</button>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+</body>
+
+</html>

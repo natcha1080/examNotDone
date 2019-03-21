@@ -1,0 +1,57 @@
+div.box {
+    border-style: solid 10px;
+    border: none;
+}
+div.column3 {
+    margin-top: 40px;
+    margin-left: 7%;
+    margin-right: 3%;
+}
+div.column4 {
+    margin-left: 15%;
+}
+div.column7 {
+    margin-left: 30%;
+}
+body {
+    font-family: 'Kanit', sans-serif;
+}
+aside.menu {
+    border-bottom: solid 5px;
+}
+li.a {
+    display: block;
+    border-top: solid 1px;
+    border-right: solid 1px;
+    border-left: solid 1px;
+    height: 38px;  /*ขนาดช่อง */
+}
+li.b { /*ช่องที่มีสีเทา*/
+    display: block;
+    background:#DCDCDC;
+    border-top: solid 1px;
+    border-right: solid 1px;
+    border-left: solid 1px;
+    height: 38px;  /*ขนาดช่อง */
+}
+h1 {
+    font-weight: bold;
+    font-size: 40px;
+}
+h2 {
+    font-weight: bold;
+    font-size: 20px;
+}
+table {
+    border-collapse: separate;
+    border-spacing: 2px;
+}
+#image {
+    width: 45px;
+    height: 50px;
+}
+#btnAll {
+    width: 70px;
+    height: 35px;
+}
+

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit|Prompt">
+    <link rel="stylesheet" href="home.css">
+    <title>จัดการตึก</title>
+
+    <script>
+        var check = false;
+        var nameBuild = "";
+        var initialBuild = "";
+        function getData() {
+            var arrayData = [];
+            var nameBuilding;
+            var nameFullBuilding;
+            nameBuilding = document.getElementById("nameBuild").value;
+            nameFullBuilding = document.getElementById("initialBuild").value;
+
+            axios.get("http://localhost:3001/getData").then((res) => {
+                arrayData = res.data;
+                for (i = 0; i < arrayData.data.length; i++) {
+                        this.check = true;
+                        this.nameBuild = arrayData.data[i].nameBuild;
+                        this.initialBuild = arrayData.data[i].initialBuild;
+                }
+                        
+                toMain();
+            });
+        }
+
+        function toMain() {
+            if (check == true) {
+                localStorage.setItem("storageNameBuild", this.nameBuild);
+                localStorage.setItem("storageInitialBuild", this.initialBuild);
+                window.location.href = "./management.html";
+
+            }
+        }
+
+        function nextAddBuilding() {
+            location.href = "addBuilding.html";
+        }
+        function nextEditBuilding() {
+            location.href = "editBuilding.html";
+        }
+        function nextDeleteBuilding() {
+            location.href = "deleteBuilding.html";
+        }
+
+    </script>
+</head>
+
+<body onload="show()">
+    <script>
+        function show() {
+            var name = window.localStorage.getItem("storageName");
+            var type = window.localStorage.getItem("storageType");
+
+            var nameBuild = window.localStorage.getItem("storageNameBuild");
+            var initialBuild = window.localStorage.getItem("storageInitialBuild");
+
+            document.getElementById("name").innerHTML = "ชื่อ-สกุล : " + name;
+            document.getElementById("type").innerHTML = "สถานะ : " + type;
+
+            document.getElementById("nameBuild").innerHTML = "ชื่อเต็ม" + nameBuild;
+            document.getElementById("initialBuild").innerHTML = "ชื่อย่อ" + initialBuild;
+        }
+
+
+    </script>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns">
+                    <div class="column1 is-one-fifth" style="width: 100px;">
+                        <figure class="image is-64x64">
+                            <img src="user.png" alt="ImageUser">
+                        </figure>
+                    </div>
+                    <div class="column2">
+                        <label id="type">สถานะ : </label> <br>
+                        <label id="name">ชื่อ-สกุล : </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="box" style="height: 600px;">
+            <div class="columns">
+                <div class="column1 is-one-fifth" style="width: 350px;">
+                    <aside class="menu">
+                        <p class="menu-label">
+                            <h2>เมนูหลัก</h2>
+                        </p>
+                        <ul class="menu-list">
+                            <li class="b"><a></a></li>
+                            <li class="b"><a></a></li>
+                            <li class="b"><a></a></li>
+                            <li class="b"><a></a></li>
+                            <li class="b"><a></a></li>
+                            <li class="b"><a></a></li>
+                            <li class="b"><a></a></li>
+                            <li class="b"><a></a></li>
+                            <li class="a"><a href="managementBuilding.html">จัดการตึก</a></li>
+                            <li class="b"><a></a></li>
+                            <li class="b"><a></a></li>
+                            <li class="b"><a></a></li>
+                            <li class="b"><a></a></li>
+                            <li class="a"><a href="login.html">ออกจากระบบ</a></li>
+                        </ul>
+                    </aside>
+                </div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="column3">
+                    <div class="field has-addons has-centered">
+                        <div class="control">
+                            <input class="input" type="text" placeholder="ค้นหาตึก" style="width: 350px;">
+                        </div>
+                        <div class="control">
+                            <a class="button is-info">
+                                ค้นหา
+                            </a>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="table">
+                        <table class="table is-fullwidth" style="width: 900px;">
+                            <!--กำหนดความกว้างของตาราง -->
+                            <thead>
+                                <tr>
+                                    <th>ชื่อตึก(เต็ม)</th>
+                                    <th>ชื่อตึก(ย่อ)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th id="nameBuild"></th>
+                                    <th id="initialBuild"></th>
+                                </tr>
+                                <tr>
+                                    <th>Allied Health Sciences</th>
+                                    <th>AHS</th>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br>
+
+                    <div class="columns">
+                        <div class="column4" style="width: 250px;">
+                            <div class="control">
+                                <button id="btnAll" class="button is-link is-danger"
+                                    onclick="nextDeleteBuilding()">ลบ</button>
+                            </div>
+                        </div>
+                        <div class="column5" style="width: 250px;">
+                            <div class="control">
+                                <button id="btnAll" class="button is-link is-warning"
+                                    onclick="nextEditBuilding()">แก้ไข</button>
+                            </div>
+                        </div>
+                        <div class="column6">
+                            <div class="control">
+                                <button id="btnAll" class="button is-link is-primary"
+                                    onclick="nextAddBuilding()">เพิ่ม</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+</body>
+
+</html>
